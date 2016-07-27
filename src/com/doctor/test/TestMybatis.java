@@ -35,16 +35,19 @@ public class TestMybatis {
 
 	@Test
 	public void test() {
+		
 		InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("mybatis-config.xml");
+		
 		SqlSessionFactory stuMapper =  new SqlSessionFactoryBuilder().build(inputStream);
 		
 		SqlSession session = stuMapper.openSession();
+		
 		try {
-		Student blog = (Student) session.selectOne(
-		"com.doctor.entity.StudentMapper.selectStu", 1);
-		System.out.println(blog.getStuName());
+			Student blog = (Student) session.selectOne(
+					"com.doctor.entity.StudentMapper.selectStu", 1);
+			System.out.println(blog.getStuName());
 		} finally {
-		session.close();
+			session.close();
 		}
 	}
 

@@ -6,7 +6,9 @@
 	<typeAliases>
 		<package name="com.doctor.entity"/>
 	</typeAliases>
-	
+	<!-- <properties>
+		<property name="" value=""/>
+	</properties> -->
 	<environments default="mysqlTest">
 		<environment id="mysqlTest">
 			<transactionManager type="JDBC"/>
