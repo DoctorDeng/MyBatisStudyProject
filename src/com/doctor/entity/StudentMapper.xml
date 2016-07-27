@@ -5,4 +5,7 @@
 		<select id="selectStu" parameterType="int" resultType="Student">
 			select * from Student where stuId = #{id}
 		</select>
+		<insert id="addStu" >
+		 insert into student values(null,#{stuName},#{stuAge})
+		</insert>
 	</mapper>

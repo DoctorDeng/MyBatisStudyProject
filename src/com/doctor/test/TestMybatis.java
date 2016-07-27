@@ -1,9 +1,7 @@
 package com.doctor.test;
 
-import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -14,6 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.doctor.entity.Student;
+import com.doctor.entity.StudentMapper;
 
 public class TestMybatis {
 
@@ -41,7 +40,9 @@ public class TestMybatis {
 		SqlSessionFactory stuMapper =  new SqlSessionFactoryBuilder().build(inputStream);
 		
 		SqlSession session = stuMapper.openSession();
-		
+		StudentMapper stu1Mapper = session.getMapper(StudentMapper.class);
+		stu1Mapper.addStu(new Student(3,"sdf",11));
+		session.commit();
 		try {
 			Student blog = (Student) session.selectOne(
 					"com.doctor.entity.StudentMapper.selectStu", 1);
