@@ -4,16 +4,16 @@
 	<mapper namespace="com.doctor.entity.StudentMapper">
 		
 		<resultMap type="Student" id="StudentResultMap">
-			<id property="stuId" column="stuId"/>
+			<id property="stuId" column="stuIdd"/>
 			<result property="stuName" column="stuName"/>
 			<result property="stuAge" column="stuAge"/>
 		</resultMap>
 		
 		<select id="selectStu" parameterType="int" resultMap="StudentResultMap">
-			select * from Student where stuId = #{stuId}
+			select * from Student where stuIdd = #{stuId}
 		</select>
 		
-		<insert id="addStu"  useGeneratedKeys="true" keyProperty="stuId">
+	<!-- 	<insert id="addStu"  useGeneratedKeys="true" keyProperty="stuId">
 		 insert into student(stuName,stuAge) values(#{stuName},#{stuAge})
 		</insert>
 		
@@ -27,5 +27,5 @@
 		
 		<select id="selectAllStu" resultType="Student">
 			SELECT * FROM Student
-		</select>
+		</select> -->
 	</mapper>

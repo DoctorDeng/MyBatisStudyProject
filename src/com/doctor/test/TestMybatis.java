@@ -46,7 +46,7 @@ public class TestMybatis {
 	
 	@Test
 	public void selectStuById() {
-		System.out.println(stuMapper.selectStu(1).getStuId());
+		System.out.println(stuMapper.selectStu(1));
 		sqlSession.close();
 	}
 	@Test

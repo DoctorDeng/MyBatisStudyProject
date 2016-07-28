@@ -5,6 +5,11 @@ public class Student {
 	private String stuName;
 	private int stuAge;
 	
+	@Override
+	public String toString() {
+		return "Student: [stuId=" + stuId + ", stuName=" + stuName + ", stuAge=" + stuAge + "]";
+	}
+
 	public Student(){}
 	
 	public Student(int stuId, String stuName, int stuAge) {
