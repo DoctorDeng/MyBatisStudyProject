@@ -41,15 +41,22 @@ public class TestMybatis {
 		
 		SqlSession session = stuMapper.openSession();
 		StudentMapper stu1Mapper = session.getMapper(StudentMapper.class);
-		stu1Mapper.addStu(new Student(3,"sdf",11));
-		session.commit();
-		try {
+		/*stu1Mapper.addStu(new Student(3,"sdf",11));
+		session.commit();*/
+		/*System.out.println(stu1Mapper.selectStu(1).getStuName());*/
+		
+		/*try {
 			Student blog = (Student) session.selectOne(
 					"com.doctor.entity.StudentMapper.selectStu", 1);
 			System.out.println(blog.getStuName());
 		} finally {
 			session.close();
-		}
+		}*/
+		System.out.println(stu1Mapper.selectStu(1).getStuName());
+		/*stu1Mapper.updateStu(new Student(1,"aaa",20));
+		stu1Mapper.delStu(2);*/
+		/*session.commit();*/
+		session.close();
 	}
 
 }
