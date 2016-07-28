@@ -52,10 +52,11 @@ public class TestMybatis {
 		} finally {
 			session.close();
 		}*/
-		System.out.println(stu1Mapper.selectStu(1).getStuName());
+//		System.out.println(stu1Mapper.selectStu(1).getStuName());
 		/*stu1Mapper.updateStu(new Student(1,"aaa",20));
 		stu1Mapper.delStu(2);*/
 		/*session.commit();*/
+		System.out.println(stu1Mapper.selectAllStu().size());
 		session.close();
 	}
 

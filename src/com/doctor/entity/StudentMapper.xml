@@ -14,4 +14,8 @@
 		<delete id="delStu" parameterType="int">
 			DELETE FROM student WHERE stuId = #{stuId}
 		</delete>
+		
+		<select id="selectAllStu" resultType="Student">
+			SELECT * FROM Student
+		</select>
 	</mapper>

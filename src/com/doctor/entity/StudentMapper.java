@@ -1,7 +1,6 @@
 package com.doctor.entity;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Update;
+import java.util.List;
 
 public interface StudentMapper {
 	public  Student selectStu(int stuId);
@@ -10,4 +9,6 @@ public interface StudentMapper {
 	public int delStu(int stuId);
 	/*@Update("UPDATE student SET stuName= #{stuName}, stuAge= #{stuAge} WHERE stuId = #{stuId}")*/
 	public int updateStu(Student stu);
+	
+	public List<Student> selectAllStu();
 }
