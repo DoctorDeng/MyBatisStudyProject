@@ -13,19 +13,25 @@ import org.junit.Test;
 
 import com.doctor.entity.Student;
 import com.doctor.entity.StudentMapper;
+import com.doctor.util.DBAccess;
 
 public class TestMybatis {
-
+	private SqlSession sqlSession;
+	private StudentMapper stuMapper;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
+		
 	}
 
 	@Before
 	public void setUp() throws Exception {
+		sqlSession = DBAccess.getDBAccess().getSqlSession();
+		stuMapper = sqlSession.getMapper(StudentMapper.class);
 	}
 
 	@After
@@ -33,31 +39,49 @@ public class TestMybatis {
 	}
 
 	@Test
-	public void test() {
-		
-		InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("mybatis-config.xml");
-		
-		SqlSessionFactory stuMapper =  new SqlSessionFactoryBuilder().build(inputStream);
-		
-		SqlSession session = stuMapper.openSession();
-		StudentMapper stu1Mapper = session.getMapper(StudentMapper.class);
-		/*stu1Mapper.addStu(new Student(3,"sdf",11));
-		session.commit();*/
-		/*System.out.println(stu1Mapper.selectStu(1).getStuName());*/
-		
-		/*try {
-			Student blog = (Student) session.selectOne(
-					"com.doctor.entity.StudentMapper.selectStu", 1);
-			System.out.println(blog.getStuName());
-		} finally {
-			session.close();
-		}*/
-//		System.out.println(stu1Mapper.selectStu(1).getStuName());
-		/*stu1Mapper.updateStu(new Student(1,"aaa",20));
-		stu1Mapper.delStu(2);*/
-		/*session.commit();*/
-		System.out.println(stu1Mapper.selectAllStu().size());
-		session.close();
+	public void selectAllStu() {
+		System.out.println(stuMapper.selectAllStu().size());
+		sqlSession.close();
 	}
-
+	
+	@Test
+	public void selectStuById() {
+		System.out.println(stuMapper.selectStu(1).getStuId());
+		sqlSession.close();
+	}
+	@Test
+	public void updateStu() {
+		int i = stuMapper.updateStu(new Student(1,"aaa",20));
+		sqlSession.commit();
+		
+		if (i==1) {
+			System.out.println("更新成功");
+		} else {
+			System.out.println("更新失败");
+		}
+		sqlSession.close();
+	}
+	@Test
+	public void addStu() {
+		int i = stuMapper.addStu(new Student(5,"bbb",30));
+		sqlSession.commit();
+		
+		if (i==1) {
+			System.out.println("添加成功");
+		} else {
+			System.out.println("添加失败");
+		}
+		sqlSession.close();
+	}
+	@Test
+	public void delelteStuById() {
+		int i = stuMapper.delStu(2);
+		sqlSession.commit();
+		if (i==1) {
+			System.out.println("删除成功");
+		} else {
+			System.out.println("删除失败");
+		}
+		sqlSession.close();
+	}
 }

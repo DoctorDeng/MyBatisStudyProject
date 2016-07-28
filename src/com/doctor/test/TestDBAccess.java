@@ -5,14 +5,16 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import com.doctor.db.DBAccess;
+import com.doctor.util.DBAccess;
 
 public class TestDBAccess {
 
 	@Test
 	public void test() {
-		DBAccess dbAccess = new DBAccess();
+		DBAccess dbAccess = DBAccess.getDBAccess();
 		try {
+			System.out.println(dbAccess.getSqlSession());
+			System.out.println(dbAccess.getSqlSession());
 			System.out.println(dbAccess.getSqlSession());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
