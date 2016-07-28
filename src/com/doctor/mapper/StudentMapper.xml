@@ -2,15 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	<mapper namespace="com.doctor.entity.StudentMapper">
-		<select id="selectStu" parameterType="int" resultType="Student">
+		
+		<resultMap type="Student" id="StudentResultMap">
+			<id property="stuId" column="stuId"/>
+			<result property="stuName" column="stuName"/>
+			<result property="stuAge" column="stuAge"/>
+		</resultMap>
+		
+		<select id="selectStu" parameterType="int" resultMap="StudentResultMap">
 			select * from Student where stuId = #{stuId}
 		</select>
+		
 		<insert id="addStu"  useGeneratedKeys="true" keyProperty="stuId">
 		 insert into student(stuName,stuAge) values(#{stuName},#{stuAge})
 		</insert>
+		
 		<update id="updateStu" parameterType="Student" >
 			UPDATE student SET stuName= #{stuName}, stuAge= #{stuAge} WHERE stuId = #{stuId}
 		</update>
+		
 		<delete id="delStu" parameterType="int">
 			DELETE FROM student WHERE stuId = #{stuId}
 		</delete>

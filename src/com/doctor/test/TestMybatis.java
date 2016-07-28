@@ -77,6 +77,7 @@ public class TestMybatis {
 	public void delelteStuById() {
 		int i = stuMapper.delStu(2);
 		sqlSession.commit();
+		
 		if (i==1) {
 			System.out.println("删除成功");
 		} else {
