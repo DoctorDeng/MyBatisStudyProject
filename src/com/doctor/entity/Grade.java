@@ -1,5 +1,7 @@
 package com.doctor.entity;
 
+import java.util.List;
+
 public class Grade {
 	/**
 	 * 年级ID
@@ -9,6 +11,10 @@ public class Grade {
 	 * 年级名称
 	 */
 	private String gradeName;
+	/**
+	 * 学生集合--一个年级对应多个学生
+	 */
+	private List<Student> students;
 	
 	public Grade(){}
 	
@@ -29,5 +35,18 @@ public class Grade {
 	}
 	public void setGradeName(String gradeName) {
 		this.gradeName = gradeName;
+	}
+
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
+
+	@Override
+	public String toString() {
+		return "Grade [gradeId=" + gradeId + ", gradeName=" + gradeName + ", students=" + students.size() + "]";
 	}
 }

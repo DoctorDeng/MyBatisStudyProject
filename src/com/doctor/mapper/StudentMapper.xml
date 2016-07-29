@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	<mapper namespace="com.doctor.entity.StudentMapper">
+	<mapper namespace="com.doctor.mapper.StudentMapper">
 		<resultMap type="Student" id="StudentResultMapTest">
 			<id property="stuId" column="stuId"/>
 			<result property="stuName" column="stuName"/>
 			<result property="stuAge" column="stuAge"/>
-			<association property="grade" javaType="Grade" column="gradeId">
-				<!-- <id property="gradeId" column="gradeId"/> -->
+			<association property="grade" javaType="Grade">
+				<id property="gradeId" column="gradeId"/> 
     			<result property="gradeName" column="gradeName"/>
 			</association>
 		</resultMap> 
@@ -45,6 +45,43 @@
 		
 		<select id="selectAllStuWithGrade"  resultMap="StudentResultMap">
 			select * from Student 
+		</select>
+		
+		
+		<select id="selectStudentsByGradeId" parameterType="int" resultType="Student">
+			select * from Student  where gradeId = #{gradeId}
+		</select>
+		
+		<select id="selectStudentsByCondition" parameterType="Student" resultType="Student">
+			select * from student 
+		<where>
+			<if test="stuId != null and stuId != '' ">
+				 AND stuId = #{stuId}
+			</if>
+			<if test="stuName != null and stuName != '' ">
+			 	AND stuName like  CONCAT(CONCAT('%',#{stuName}),'%') 
+			</if>
+			<if test="stuAge != null and stuAge != '' ">
+				 AND stuAge = #{stuAge}
+			</if>
+		</where>
+		</select>
+		
+		<update id="updateStudent" parameterType="Student" >
+			update student
+    	 <set>
+     		 <if test="stuName != null and stuName != ''">stuName=#{stuName},</if>
+      		 <if test="stuAge != null">stuAge=#{stuAge},</if>
+   		 </set>
+ 		 where stuId=#{stuId}
+		</update>
+		
+		<select id="selectStudentByIds" resultType="Student">
+  			SELECT *  FROM student  WHERE stuId in
+ 			 <foreach item="stuIds" index="index" collection="list"
+      				open="(" separator="," close=")">
+       			 #{stuId}
+ 			 </foreach>
 		</select>
 		
 	</mapper>

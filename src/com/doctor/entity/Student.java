@@ -16,7 +16,7 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [stuId=" + stuId + ", stuName=" + stuName + ", stuAge=" + stuAge + ", gradeName=" + grade.getGradeName() + "]";
+		return "Student [stuId=" + stuId + ", stuName=" + stuName + ", stuAge=" + stuAge + /*", gradeName=" + grade.getGradeName()*/  "]";
 	}
 
 

@@ -22,6 +22,8 @@
 
 	<mappers>
 		<mapper resource="com/doctor/mapper/StudentMapper.xml"/>
-		<mapper resource="com/doctor/mapper/GradeMapper.xml"/>
+		<mapper resource="com/doctor/mapper/GradeMapper.xml"/> 
+		<mapper resource="com/doctor/mapper/TeacherMapper.xml" /> 
+		<mapper resource="com/doctor/mapper/GradeMapper.xml" /> 
 	</mappers>
 </configuration>

@@ -1,5 +1,6 @@
-package com.doctor.test;
+package test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -10,7 +11,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.doctor.entity.Student;
-import com.doctor.entity.StudentMapper;
+import com.doctor.mapper.StudentMapper;
 import com.doctor.util.SqlSessionUtil;
 
 public class TestMybatis {
@@ -102,5 +103,53 @@ public class TestMybatis {
 		sqlSession.close();
 	}
 	
+	@Test
+	public void testSelectStudentsByGradeId(){
+		System.out.println(stuMapper.selectStudentsByGradeId(1));
+	}
 	
+	@Test
+	public void selectStudentsByCondition(){
+		//---------------模糊查找-------------------------//
+		Student student = new Student();
+		student.setStuName("杨");
+		List<Student> students = stuMapper.selectStudentsByCondition(student);
+		System.out.println("通过名字: '"+student.getStuName()+"'  模糊查找如下");
+		for (Student stu: students) {
+			System.out.println(stu.toString());
+		}
+		//----------------精确查找-----------------------//
+		Student student1 = new Student();
+		student1.setStuId(1);;
+		List<Student> students1 = stuMapper.selectStudentsByCondition(student1);
+		System.out.println("通过ID:  '"+student1.getStuId()+"'  精确查找如下");
+		for (Student stu: students1) {
+			System.out.println(stu.toString());
+		}
+	}
+	
+	@Test
+	public void updateStudentsBySet(){
+		Student student = new Student(1,"",50);
+		int result = stuMapper.updateStudent(student);
+		sqlSession.commit();
+		if (result==1) {
+			System.out.println("更新成功");
+		} else {
+			System.out.println("更新失败");
+		}
+		sqlSession.close();
+	}
+	
+	@Test
+	public void selectStudentsForeach(){
+		List<Integer> idList = new ArrayList<>();
+		idList.add(1);
+		idList.add(2);
+		idList.add(3);
+		
+		
+		
+		Student student = new Student(1,"嘿嘿嘿",0);
+	}
 }

@@ -5,9 +5,11 @@
 		<resultMap type="Grade" id="GradeResultMap">
 			<id property="gradeId" column="gradeId" javaType="int" jdbcType="NUMERIC"/>
 			<result property="gradeName" column="gradeName" javaType="String" jdbcType="VARCHAR"/>
+			<collection property="students"  column="gradeId" 
+			select="com.doctor.mapper.StudentMapper.selectStudentsByGradeId" />
 		</resultMap>
 		
 		<select id="selectGradeById" parameterType="int" resultMap="GradeResultMap">
-			SELECT gradeId,gradeName FROM grade where gradeId = #{gradeId}
+			SELECT * FROM grade where gradeId = #{gradeId}
 		</select>
 	</mapper>

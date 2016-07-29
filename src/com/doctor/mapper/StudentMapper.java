@@ -1,6 +1,9 @@
-package com.doctor.entity;
+package com.doctor.mapper;
 
 import java.util.List;
+import java.util.Map;
+
+import com.doctor.entity.Student;
 
 public interface StudentMapper {
 	public  Student selectStu(int stuId);
@@ -19,4 +22,12 @@ public interface StudentMapper {
 	public List<Student> selectAllStuWithGrade();
 	
 	public List<Student> selectAllStuWithTest();
+	
+	public List<Student> selectStudentsByGradeId(int gradeId);
+	
+	public List<Student> selectStudentsByCondition(Student student);
+	
+	public int updateStudent(Student student);
+	
+	public List<Student> selectStudentByIds(Map map);
 }
