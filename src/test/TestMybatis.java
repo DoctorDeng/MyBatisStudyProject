@@ -148,8 +148,6 @@ public class TestMybatis {
 		idList.add(2);
 		idList.add(3);
 		
-		
-		
 		Student student = new Student(1,"嘿嘿嘿",0);
 	}
 }
