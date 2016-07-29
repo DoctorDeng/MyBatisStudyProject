@@ -7,47 +7,46 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
 /**
  * 访问数据库类
  * @author Doctor邓
  *
  */
-public class DBAccess {
-	private static DBAccess dbAccess = new DBAccess();
+public class SqlSessionUtil {
 	private static InputStream inputStream = null;
 	private static SqlSessionFactory sqlSessionFactory = null;
 	
-	private DBAccess(){}
-	
-	public static DBAccess getDBAccess() {
-		return dbAccess;
-	}
+	private SqlSessionUtil(){}
 	/**
 	 * 获取SqlSessionFactory
 	 * @return SqlSessionFactory
 	 * @throws IOException
 	 */
 	private static SqlSessionFactory getSqlSessionFactory() throws IOException {
-		//通过配置文件获取数据库连接信息
-		//路径从src的根路径下开始算起
+		/**
+		 * 通过配置文件获取数据库连接信息
+		 * 路径从src的根路径下开始算起
+		 */
 		if (inputStream == null) {
 			inputStream = Resources.getResourceAsStream("com/doctor/config/mybatis-config.xml");
 		}
 		if (sqlSessionFactory == null) {
-			//通过配置信息构建SqlSessionFactory
+			/**
+			 * 通过配置信息构建SqlSessionFactory
+			 */
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 		}
 		return sqlSessionFactory;
 	}
-	
 	/**
 	 * 获取SqlSession
 	 * @return SqlSession
 	 * @throws IOException 
 	 */
-	public  SqlSession getSqlSession() throws IOException {
-		//通过SqlSessionFactory打开一个数据库会话
+	public static SqlSession getSqlSession() throws IOException {
+		/**
+		 * 通过SqlSessionFactory打开一个数据库会话
+		 */
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		return sqlSession;
 	}

@@ -1,12 +1,16 @@
 package com.doctor.entity;
 
 public class Grade {
+	/**
+	 * 年级ID
+	 */
 	private int gradeId;
+	/**
+	 * 年级名称
+	 */
 	private String gradeName;
 	
-	public Grade(){
-		
-	}
+	public Grade(){}
 	
 	public Grade(int gradeId, String gradeName) {
 		super();

@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import com.doctor.entity.Student;
 import com.doctor.entity.StudentMapper;
-import com.doctor.util.DBAccess;
+import com.doctor.util.SqlSessionUtil;
 
 public class TestMybatis {
 	private SqlSession sqlSession;
@@ -28,7 +28,7 @@ public class TestMybatis {
 
 	@Before
 	public void setUp() throws Exception {
-		sqlSession = DBAccess.getDBAccess().getSqlSession();
+		sqlSession = SqlSessionUtil.getSqlSession();
 		stuMapper = sqlSession.getMapper(StudentMapper.class);
 	}
 
@@ -37,18 +37,18 @@ public class TestMybatis {
 	}
 
 	@Test
-	public void selectAllStu() {
+	public void testSelectAllStu() {
 		System.out.println(stuMapper.selectAllStu().size());
 		sqlSession.close();
 	}
 	
 	@Test
-	public void selectStuById() {
+	public void testSelectStuById() {
 		System.out.println(stuMapper.selectStu(1));
 		sqlSession.close();
 	}
 	@Test
-	public void updateStu() {
+	public void testUpdateStu() {
 		int i = stuMapper.updateStu(new Student(1,"aaa",20));
 		sqlSession.commit();
 		
@@ -60,7 +60,7 @@ public class TestMybatis {
 		sqlSession.close();
 	}
 	@Test
-	public void addStu() {
+	public void testAddStu() {
 		int i = stuMapper.addStu(new Student(5,"bbb",30));
 		sqlSession.commit();
 		
@@ -72,7 +72,7 @@ public class TestMybatis {
 		sqlSession.close();
 	}
 	@Test
-	public void delelteStuById() {
+	public void testDelelteStuById() {
 		int i = stuMapper.delStu(2);
 		sqlSession.commit();
 		
@@ -85,7 +85,7 @@ public class TestMybatis {
 	}
 	
 	@Test
-	public void testselectAllStuWithGrade() {
+	public void testSelectAllStuWithGrade() {
 		List<Student> studentList = stuMapper.selectAllStuWithGrade();
 		for (Student stu: studentList) {
 			System.out.println(stu.toString());
@@ -94,7 +94,7 @@ public class TestMybatis {
 	}
 	
 	@Test
-	public void testselectAllStuWithTest() {
+	public void testSelectAllStuWithTest() {
 		List<Student> studentList = stuMapper.selectAllStuWithTest();
 		for (Student stu: studentList) {
 			System.out.println(stu.toString());
