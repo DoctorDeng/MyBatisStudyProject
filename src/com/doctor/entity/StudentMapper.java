@@ -15,4 +15,8 @@ public interface StudentMapper {
 	public int updateStu(Student stu);
 	
 	public List<Student> selectAllStu();
+	
+	public List<Student> selectAllStuWithGrade();
+	
+	public List<Student> selectAllStuWithTest();
 }

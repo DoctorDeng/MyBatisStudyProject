@@ -4,11 +4,21 @@ public class Student {
 	private int stuId;
 	private String stuName;
 	private int stuAge;
-	
+	private Grade grade;
+	public Student(int stuId, String stuName, int stuAge, Grade grade) {
+		super();
+		this.stuId = stuId;
+		this.stuName = stuName;
+		this.stuAge = stuAge;
+		this.grade = grade;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Student: [stuId=" + stuId + ", stuName=" + stuName + ", stuAge=" + stuAge + "]";
+		return "Student [stuId=" + stuId + ", stuName=" + stuName + ", stuAge=" + stuAge + ", gradeName=" + grade.getGradeName() + "]";
 	}
+
 
 	public Student(){}
 	
@@ -36,6 +46,14 @@ public class Student {
 	}
 	public void setStuAge(int stuAge) {
 		this.stuAge = stuAge;
+	}
+
+	public Grade getGrade() {
+		return grade;
+	}
+
+	public void setGrade(Grade grade) {
+		this.grade = grade;
 	}
 	
 	

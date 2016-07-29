@@ -1,10 +1,8 @@
 package com.doctor.test;
 
-import java.io.InputStream;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -85,4 +83,24 @@ public class TestMybatis {
 		}
 		sqlSession.close();
 	}
+	
+	@Test
+	public void testselectAllStuWithGrade() {
+		List<Student> studentList = stuMapper.selectAllStuWithGrade();
+		for (Student stu: studentList) {
+			System.out.println(stu.toString());
+		}
+		sqlSession.close();
+	}
+	
+	@Test
+	public void testselectAllStuWithTest() {
+		List<Student> studentList = stuMapper.selectAllStuWithTest();
+		for (Student stu: studentList) {
+			System.out.println(stu.toString());
+		}
+		sqlSession.close();
+	}
+	
+	
 }
