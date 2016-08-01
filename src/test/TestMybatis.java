@@ -60,9 +60,20 @@ public class TestMybatis {
 		}
 		sqlSession.close();
 	}
+	/**
+	 * 
+	 */
 	@Test
 	public void testAddStu() {
-		int i = stuMapper.addStu(new Student(5,"bbb",30));
+/*		Student stu = new Student();
+		stu.setStuName("doctor");
+		stu.setStuAge(20);
+		stu.setStuId(1);
+		int i = stuMapper.addStu(stu);
+		System.out.println(stu.getStuId());
+		sqlSession.commit();
+		sqlSession.close();*/
+		/*System.out.println();
 		sqlSession.commit();
 		
 		if (i==1) {
@@ -70,7 +81,7 @@ public class TestMybatis {
 		} else {
 			System.out.println("添加失败");
 		}
-		sqlSession.close();
+		sqlSession.close();*/
 	}
 	@Test
 	public void testDelelteStuById() {

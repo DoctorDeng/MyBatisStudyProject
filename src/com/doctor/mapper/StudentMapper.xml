@@ -21,20 +21,20 @@
 		
 		<!-- <select id="selectStu" parameterType="int" resultType="Student">
 			select * from Student where stuId = #{stuId}
-		</select>
+		</select> -->
 		
-	<insert id="addStu"  useGeneratedKeys="true" keyProperty="stuId">
-		 insert into student(stuName,stuAge) values(#{stuName},#{stuAge})
+		<insert id="addStu"  useGeneratedKeys="true" keyProperty="stuId" parameterType="Student">
+		 	 insert into student(stuName,stuAge) values(#{stuName},#{stuAge})
 		</insert>
 		
-		<update id="updateStu" parameterType="Student" >
+		<!-- <update id="updateStu" parameterType="Student" >
 			UPDATE student SET stuName= #{stuName}, stuAge= #{stuAge} WHERE stuId = #{stuId}
 		</update>
 		
 		<delete id="delStu" parameterType="int">
 			DELETE FROM student WHERE stuId = #{stuId}
-		</delete>
-		-->
+		</delete> -->
+		
 		<select id="selectAllStu" resultType="Student">
 			SELECT stuId,stuName, stuAge FROM Student
 		</select> 
