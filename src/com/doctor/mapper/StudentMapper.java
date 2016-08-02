@@ -30,4 +30,6 @@ public interface StudentMapper {
 	public int updateStudent(Student student);
 	
 	public List<Student> selectStudentByIds(Map map);
+	
+	public List<Student> selectStudentByPage(Map map);
 }

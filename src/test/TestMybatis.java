@@ -1,7 +1,9 @@
 package test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.junit.After;
@@ -12,6 +14,7 @@ import org.junit.Test;
 
 import com.doctor.entity.Student;
 import com.doctor.mapper.StudentMapper;
+import com.doctor.util.Page;
 import com.doctor.util.SqlSessionUtil;
 
 public class TestMybatis {
@@ -160,5 +163,18 @@ public class TestMybatis {
 		idList.add(3);
 		
 		Student student = new Student(1,"嘿嘿嘿",0);
+	}
+	
+	@Test
+	public void selectStudentByPage() {
+		Map map = new HashMap();
+		Page page = new Page();
+		page.setLimitStart(1);
+		page.setPageSize(3);
+		map.put("page", page);
+		List<Student> students = stuMapper.selectStudentByPage(map);
+		for (Student stu:students) {
+			System.out.println(stu.toString());
+		}
 	}
 }

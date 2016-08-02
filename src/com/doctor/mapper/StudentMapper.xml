@@ -84,4 +84,7 @@
  			 </foreach>
 		</select>
 		
+		<select id="selectStudentByPage" parameterType="java.util.Map" resultType="Student">
+			SELECT * FROM student 
+		</select>
 	</mapper>
